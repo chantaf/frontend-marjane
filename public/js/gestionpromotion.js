@@ -1,7 +1,23 @@
+
  
+ //
+ function verifie(){
+     let statusrole= document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {});
+       
+        if(statusrole.role=="admincentre"){
+            var visible=document.getElementsByName("centre");
+            for (let i = 0; i < visible.length; i++) {
+                visible[i].style.display="none"
+                
+            }
+        }
+ }
+ window.addEventListener('load',verifie)
 
  //function refrech
-
  function refrech(){
     window.location.reload();
  }
@@ -173,3 +189,20 @@ function supprimer(id){
     supprimerpromotion(id);
 }
      
+
+
+//logout
+    function logout() {
+        var cookies = document.cookie.split(";");
+    
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+        refrech();
+    }
+
+
+document.getElementById("logout").addEventListener("click",logout);

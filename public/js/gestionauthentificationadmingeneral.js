@@ -13,10 +13,11 @@ function authentification(){
             window.location.href = "dashboard"
         }
     )
-    .catch(
+    .catch(err=>  {console.log(err)
         document.getElementById("msgerr").innerHTML="login ou password invalide!!",
         document.getElementById("login").value="",
-        document.getElementById("password").value=""
+        document.getElementById("password").value=""}
+      
     )
  
  

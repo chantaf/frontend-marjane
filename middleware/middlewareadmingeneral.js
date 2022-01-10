@@ -10,10 +10,10 @@ exports.middleware=(req,res,success)=>
             }else{
 
               if(verifiedJwt.role=="admingeneral"){
-                  res.cookies=("role","admingeneral");
+                  res.cookie("role","admingeneral");
                 success();
             }else if(verifiedJwt.role=="admincentre"){
-                res.cookies=("role","admincentre");
+                res.cookie("role","admincentre");
                 success();
             }
 
@@ -21,6 +21,6 @@ exports.middleware=(req,res,success)=>
         })       
     }else{
 
-        res.redirect('/authentificationadmingeneral')
+        res.redirect('/authentificationadmincentre')
     }
 }
