@@ -1,6 +1,6 @@
 
  
- //
+ //function verifie
  function verifie(){
      let statusrole= document.cookie
         .split(';')

@@ -3,23 +3,16 @@
 function authentification(){
 
     axios
-    .post('http://localhost:3000/authresposablerayon',{
+    .post('http://localhost:3000/authresponsablerayon',{
         email:document.getElementById("login").value,
         password:document.getElementById("password").value
     })
     .then(res => 
-         res.data.data_user.forEach(element => {
-            sessionStorage.setItem('email',element.email);
-            sessionStorage.setItem('nom',element.nom);
-            sessionStorage.setItem('token',res.data.accessToken);
-            document.getElementById("login").value="";
-            document.getElementById("password").value="";
-            document.getElementById("msgerr").innerHTML="";
-            
-             window.location.href = "dashboard";
-         })
-        
-        
+        {
+            document.cookie = "token=" + res.data.accessToken,
+            window.location.href = "validerpromotions"
+        }
+         
     )
       
 

@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(cookieParser())
 const {middleware} = require('./middleware/middlewareadmingeneral')
-const {middlewareadmincentre} = require('./middleware/middlewareadmincentre')
+const {middlewareresponsablerayon} = require('./middleware/middlewareresponsablerayon')
 
 // use res.render to load up an ejs view file
 
@@ -78,10 +78,22 @@ app.get('/registerresponsable',middleware, function(req, res) {
   res.render('registerresponsable');
 });
 
+//page journalisation
+app.get('/journalisation',middleware, function(req, res) {
+  res.render('journalisation');
+});
+
 //page promotion
 app.get('/promotions',middleware, function(req, res) {
   res.render('promotions');
 });
+
+
+//page validerpromotions
+app.get('/validerpromotions',middlewareresponsablerayon, function(req, res) {
+  res.render('validerpromotions');
+});
+
 
 app.listen(4000);
 console.log('4000 is the magic port');
